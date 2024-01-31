@@ -16,4 +16,5 @@ class Person extends Model
         "phone_number",
         "birth_date"
     ];
+    public $timestamps = false;
 }

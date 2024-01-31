@@ -16,18 +16,11 @@ class PersonFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        $teljes_nevek = [
-            "Kovács Alexandra",
-            "Nagy Gergő",
-            "Tóth Zsófia",
-            "Varga Balázs",
-            "Szabó Emese"
-        ];
+    {      
         $faker = Faker::create();
 
         return [
-            "name" => $faker->randomElement($teljes_nevek),
+            "name" => $faker->name,
             "email" => $faker->email(),
             "address" => $faker->streetAddress,
             "phone_number" => $faker->phoneNumber,

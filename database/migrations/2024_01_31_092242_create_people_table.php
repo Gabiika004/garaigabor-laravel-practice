@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->string("name",40);
-            $table->string("email",30);
+            $table->string("email",50);
             $table->string("address",50);
-            $table->string("phone_number", 15);
+            $table->string("phone_number", 20);
             $table->date("birth_date");
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
