@@ -9,12 +9,14 @@ class Person extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        "name",
-        "email",
-        "address",
-        "phone_number",
-        "birth_date"
-    ];
+    // protected $fillable = [
+    //     "name",
+    //     "email",
+    //     "address",
+    //     "phone_number",
+    //     "birth_date"
+    // ];
+
+    protected $guarded = [];
     public $timestamps = false;
 }

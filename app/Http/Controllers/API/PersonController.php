@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePersonRequest;
+use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -20,9 +22,9 @@ class PersonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePersonRequest $request)
     {
-        $person = Person::create($request->all());
+        $person = Person::create($request->validated());
         return $person;
     }
 
@@ -41,13 +43,13 @@ class PersonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePersonRequest $request, string $id)
     {
         $person = Person::find($id);
         if(is_null($person)){
             return response()->json(["message" => "Nem található person(személy) az alábbi azonosítóval: $id"],404);
         }
-        $person->fill($request->all());
+        $person->fill($request->validated());
         $person->save();
         return $person;
     }
